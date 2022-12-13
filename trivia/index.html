@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoad', function(){
+
+                let message = document.querySelector('#message');
+
+                // Click on correct button, set background color to green and show a message
+                let correct_button = document.querySelector('.correct');
+                correct_button.addEventListener('click', function(){
+                    correct_button.style.backgroundColor = 'green';
+                    message.innerHTML = 'Correct!';
+                });
+
+                // Click on correct button, set background color to green and show a message
+                let incorrect_buttons = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrect_buttons.length; i++) {
+                    incorrect_buttons[i].addEventListener('click', function(){
+                        incorrect_buttons[i].style.backgroundColor = 'red';
+                        message.innerHTML = 'Incorrect';
+                    });
+                }
+
+                // Check free answer
+                document.querySelector('#free_button').addEventListener('click', function(){
+                    let free_message = document.querySelector('#free_message');
+
+                    let input = document.querySelector('input');
+                    if (input.value == "1") {
+                        input.style.backgroundColor = 'green';
+                        free_message.innerHTML = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        free_message.innerHTML = 'Incorrect';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice</h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Which is the highest grossing movie?</h3>
+
+                <button class="incorrect" type="submit">Titanic</button>
+                <button class="incorrect" type="submit">Avatar</button>
+                <button class="incorrect" type="submit">Star Wars: The Force Awakens</button>
+                <button class="correct" type="submit">Avengers: Endgame</button>
+
+                <p id="message"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>How many wins as 'Best Actor' does Leonardo DeCaprio has by Academy Awards?</h3>
+
+                <input type="text">
+
+                <button id="free_button" type="submit">Check Answer</button>
+                <p id="free_message"></p>
+            </div>
+        </div>
+    </body>
+</html>
